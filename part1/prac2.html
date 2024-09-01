@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Practical</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        /* Basic styling for form elements */
+        h1{
+            font-weight: bold;
+            text-align: center;
+        }
+    body{
+        
+    /* background-image: url("C:\Users\raj\Flask-Course\part1\Screenshot 2024-08-20 134805.png"); Replace with your image file name
+    background-size: cover; /* Adjust as needed (cover, contain, etc.) 
+    background-repeat: no-repeat;
+    */
+    }
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: hsla(240, 11%, 95%, 0.861);
+}
+
+img{
+    z-index: -1;
+}
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="date"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Styling for submit and reset buttons */
+input[type="submit"],
+input[type="reset"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="reset"] {
+    background-color: #dc3545;
+}
+
+/* Additional styling for specific elements (customize as needed) */
+#username,
+#email,
+#password,
+#age,
+#address,
+#dob,
+#pic,
+#qualification {
+    /* Add specific styles for individual form fields */
+}
+
+/* Media queries for responsiveness (customize as needed) */
+@media screen and (max-width: 600px) {
+    form {
+        /* Adjust styles for smaller screens */
+    }
+}
+
+    </style>
+
+   
+</head>
+<body>
+    <img src="Screenshot 2024-08-20 134805.png" alt="">
+    <header>
+        <h1>Create Your Account</h1>
+        <hr>
+    </header>
+    <form action="/.php"> 
+        <label for="username">Enter username:</label>
+        <input type="text" id="username1" name="username" placeholder="Enter Username"><br><br>
+
+        <label for="email">Enter Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter Email"><br><br>
+
+        <label for="password">Enter Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password"><br><br>
+
+        <!-- <label for="age">Enter Age:</label>
+        <input type="number" id="age" name="age" min="18" max="30" placeholder="Enter Age"><br><br> -->
+
+        <label for="address">Enter Address:</label>
+        <textarea name="address" id="address" cols="30" rows="4" placeholder="Enter Address"></textarea><br><br>
+
+        <!-- <label for="dob">Select DOB:</label>
+        <input type="date" id="dob" name="DOB"><br><br> -->
+
+      
+    
+        
+
+        <input type="submit" name="Submit" value="Submit" onclick="Reg()">
+        <input type="reset" name="reset" value="Reset">
+    </form>
+
+    <script>
+        function Reg(){
+            var name= document.getElementById('username1').value;
+            if(name ==""){
+                alert('This full name is missing!');
+            }
+
+        }
+    </script>
+</body>
+
+</html>
