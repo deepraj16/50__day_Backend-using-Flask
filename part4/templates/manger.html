@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+
+<!--if manger is present then show the code other not show anything -->
+{%  block content %}
+    {% for emp_id,emp_data in employee.items()   %}
+       {% if emp_data["postion"].lower() == "manager" %}
+       <div>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>{{ emp_id }}</td>
+    
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>{{ emp_data["name"] }}</td>
+                
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td>{{ emp_data["age"] }}</td>
+                
+            </tr>
+            <tr>
+                <td>postion:</td>
+                <td>{{ emp_data["postion"] }}</td>
+                
+            </tr>
+        </table>
+        <br>
+    </div>
+    {% endif %}
+    {% endfor %}
+{% endblock %}

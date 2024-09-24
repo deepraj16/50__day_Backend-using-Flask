@@ -1,0 +1,20 @@
+
+{% extends "layout.html" %}
+<!--Use of block in jinja code -->
+{% block content %}
+<h2>the input tag {{number}}</h2>
+<!--how to use the if else using jinja-->
+{% if number == 0 %}
+    <p>this given number {{number}} is nether is Even or odd</p>
+{% elif number % 2 ==0 %}
+    <p>the number input {{number}} is even</p>
+
+{% else %}
+    <p>the number is odd</p>
+
+    <!-- jina support python code -->
+{% endif %}
+
+
+{% endblock %}
+

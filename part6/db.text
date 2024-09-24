@@ -1,0 +1,42 @@
+>>> raj =Employee(name='raj',age='20',email='raj@gmail.com')
+>>> db.session.add(raj)
+>>> db.session.commit()
+>>> e = Employee.query.all()
+>>> e
+[Employee('Micheal','42','michael@gmail.com'), Employee('om','34','abc@gmail.com'), Employee('raj','20','raj@gmail.com')]
+>>> e[0]
+Employee('Micheal','42','michael@gmail.com')
+>>> e[1]
+Employee('om','34','abc@gmail.com')
+>>> e[3]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+>>> e[2]
+Employee('raj','20','raj@gmail.com')
+>>> mike =e[0]
+>>> mike
+Employee('Micheal','42','michael@gmail.com')
+>>> mike[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'Employee' object is not subscriptable
+>>> mike.name
+'Micheal'
+>>> mike.age
+42
+>>> mike.email
+'michael@gmail.com'
+>>> for emp in e:
+... print(f'{emp.name} who have age {emp.age} and email - {emp.email}')
+  File "<stdin>", line 2
+    print(f'{emp.name} who have age {emp.age} and email - {emp.email}')
+    ^
+IndentationError: expected an indented block after 'for' statement on line 1
+>>> for emp in e:
+...     print(f'{emp.name} who have age {emp.age} and email - {emp.email}')
+...
+Micheal who have age 42 and email - michael@gmail.com
+om who have age 34 and email - abc@gmail.com
+raj who have age 20 and email - raj@gmail.com
+>>>s

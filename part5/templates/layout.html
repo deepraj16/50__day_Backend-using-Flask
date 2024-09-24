@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        div{
+    
+            align-items: center;
+            color: black;
+            border: 30px;
+            
+        }
+        .deep{
+           color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Wellcome to {{ title }} page !</h1>
+    <br>
+    <br>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+                  {% for message in messages %}
+                         <div>{{ message }}</div>   
+                  {% endfor %}
+        {% endif %}
+    
+    {% endwith %}
+        
+    {% block content %}
+
+
+    {%  endblock %}
+    <br>
+    <br>
+    <a href="{{url_for('home')}}">back</a>
+</body>
+</html>

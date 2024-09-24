@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--parth parmeter in jinja-->
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>hello welcome to {{title}} page</h2>
+    
+    {% block content %}
+
+    {% endblock %}
+    <a href="{{url_for('home')}}">back to home</a>
+    <div class="basic_para">
+        <p>the given is footer</p>
+    </div>
+    
+</body>
+</html>
+

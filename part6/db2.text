@@ -1,0 +1,107 @@
+
+(base) C:\Users\raj\Flask-Course\part6>python
+Python 3.11.7 | packaged by Anaconda, Inc. | (main, Dec 15 2023, 18:05:47) [MSC v.1916 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from db_crud import app,db
+>>> app_context = app.app_context()
+>>> db.create_all()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Users\raj\anaconda3\Lib\site-packages\flask_sqlalchemy\extension.py", line 900, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "C:\Users\raj\anaconda3\Lib\site-packages\flask_sqlalchemy\extension.py", line 871, in _call_for_binds
+    engine = self.engines[key]
+             ^^^^^^^^^^^^
+  File "C:\Users\raj\anaconda3\Lib\site-packages\flask_sqlalchemy\extension.py", line 687, in engines
+    app = current_app._get_current_object()  # type: ignore[attr-defined]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raj\anaconda3\Lib\site-packages\werkzeug\local.py", line 513, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+>>> app_context.push()
+>>> db.create_all()
+>>> from db_crud import Employee
+>>> om = Employee('om','34','abc@gmail.com')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: __init__() takes 1 positional argument but 4 were given
+>>> om = Employee(name='om',age='34',email='abc@gmail.com')
+>>> db.session.add(om)
+>>> db.session.commit()
+>>> raj =Employee(name='raj',age='20',email='raj
+  File "<stdin>", line 1
+    raj =Employee(name='raj',age='20',email='raj
+                                            ^
+SyntaxError: unterminated string literal (detected at line 1)
+>>> raj =Employee(name='raj',age='20',email='raj@gmail.com')
+>>> db.session.add(raj)
+>>> db.session.commit()
+>>> e = Employee.query.all()
+>>> e
+[Employee('Micheal','42','michael@gmail.com'), Employee('om','34','abc@gmail.com'), Employee('raj','20','raj@gmail.com')]
+>>> e[0]
+Employee('Micheal','42','michael@gmail.com')
+>>> e[1]
+Employee('om','34','abc@gmail.com')
+>>> e[3]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+>>> e[2]
+Employee('raj','20','raj@gmail.com')
+>>> mike =e[0]
+>>> mike
+Employee('Micheal','42','michael@gmail.com')
+>>> mike[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'Employee' object is not subscriptable
+>>> mike.name
+'Micheal'
+>>> mike.age
+42
+>>> mike.email
+'michael@gmail.com'
+>>> for emp in e:
+... print(f'{emp.name} who have age {emp.age} and email - {emp.email}')
+  File "<stdin>", line 2
+    print(f'{emp.name} who have age {emp.age} and email - {emp.email}')
+    ^
+IndentationError: expected an indented block after 'for' statement on line 1
+>>> for emp in e:
+...     print(f'{emp.name} who have age {emp.age} and email - {emp.email}')
+...
+Micheal who have age 42 and email - michael@gmail.com
+om who have age 34 and email - abc@gmail.com
+raj who have age 20 and email - raj@gmail.com
+>>> Employee.query.first()
+Employee('Micheal','42','michael@gmail.com')
+>>> Employee.query.filter_by(name='raj').all()
+[Employee('raj','20','raj@gmail.com')]
+>>> db.session.get(Employee,1)
+Employee('Micheal','42','michael@gmail.com')
+>>> #########
+>>> #########
+>>> # update ##
+>>> m
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'm' is not defined. Did you mean: 'om'?
+>>> mike.age
+42
+>>> mike.age = 56
+>>> db.session.commit()
+>>> ##############################################
+>>> ##############################################
+>>> #Delete in database
+>>>
+>>> db.session.delete(raj)
+>>> db.session.commit()
+>>>
+>>>
+>>> #   muliple deletion # for i in object
+>>> #   muliple deletion # for i in object

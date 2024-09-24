@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<ul>
+    <li>home</li>
+      <!-- for give on new page we use -->
+    <li><a href="{{url_for('about')}}" target="_blank">about</a> </li> 
+      <!-- for normal page reloding we use-->
+    <li><a href="{{url_for ('contain1')}}">contain</a></li>
+    <li><a href="{{url_for('contact1')}}">contact</a></li>
+    <li><a href="{{url_for('employees')}}">employee</a>
+       <ul>
+        <li><a href="{{url_for('manger')}}" target="_blank">manger</a></li>
+       </ul>
+    </li>
+    <li>carees</li>
+    <br>
+    <br>
+    <button onclick="{{url_for('about')}}">submit</button>
+</ul>    
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div style="align-items: center;">
+    <table border="1" style="padding: 10px;margin: 20px;font-size: 33px;text-align: center;">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>postion</th>
+        </tr>
+        <tr>
+          
+            {% for emp_id,emp_data in employee.items() %}
+            <td>{{ emp_id }}</td>
+            <td>{{ emp_data["name"] }}</td>
+            <td>{{ emp_data["age"] }}</td>
+            <td>{{ emp_data["postion"] }}</td>
+           
+        </tr>
+        <br>
+    
+        {% endfor %}
+    </table>
+    
+</div>
+
+
+
+{% endblock %}
