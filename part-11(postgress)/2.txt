@@ -1,0 +1,58 @@
+C:\Users\raj>psql -U postgres -d bookstore -p 5432
+Password for user postgres:
+
+psql (17.0, server 16.3)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+bookstore=# \dt
+         List of relations
+ Schema | Name  | Type  |  Owner
+--------+-------+-------+----------
+ public | books | table | postgres
+(1 row)
+
+
+bookstore=# select * form books;
+ERROR:  syntax error at or near "form"
+LINE 1: select * form books;
+                 ^
+bookstore=# select * from books;
+ id |  title  | author  |  pub_date
+----+---------+---------+------------
+  1 | deepraj | deepraj | 2024-11-08
+(1 row)
+
+
+bookstore=# select * from books;
+ id |       title       |  author   |  pub_date
+----+-------------------+-----------+------------
+  1 | deepraj           | deepraj   | 2024-11-08
+  2 | word is so greate | rameshwer | 2024-11-14
+(2 rows)
+
+
+bookstore=# select * from books;
+ id |        title        |  author   |  pub_date
+----+---------------------+-----------+------------
+  1 | deepraj             | deepraj   | 2024-11-08
+  2 | word is so greate   | rameshwer | 2024-11-14
+  3 | my good day with vb | rakesh    | 2024-11-23
+  4 | the word of life    | omkar     | 2024-11-23
+(4 rows)
+
+
+bookstore=# select * from books;
+ id |        title        |  author   |  pub_date
+----+---------------------+-----------+------------
+  1 | deepraj             | deepraj   | 2024-11-08
+  2 | word is so greate   | rameshwer | 2024-11-14
+  3 | my good day with vb | rakesh    | 2024-11-23
+  4 | the word of life    | viashnave | 2024-11-23
+(4 rows)
+
+
+
+plsql , mysql , sqlite , firbase , mogodb  

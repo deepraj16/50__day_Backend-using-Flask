@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Search Engine</title>
+</head>
+<body>
+    <h1>Travel Search Engine</h1>
+    <form method="POST" action="/">
+        <label for="city">Enter a city:</label>
+        <input type="text" name="city" id="city" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if places %}
+        <h2>Popular Places:</h2>
+        <ul>
+            {% for place in places %}
+                <li>
+                    <img src="{{ place['image_url'] }}" alt="{{ place['properties']['name'] }}" width="150">
+                    <strong>{{ place['properties']['name'] }}</strong><br>
+                    <em>Type:</em> {{ place['properties']['kinds'] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
