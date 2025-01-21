@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV App</title>
+</head>
+<body>
+    <h1>CSV Processing and Search</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/upload_to_db" method="post">
+        <button type="submit">Upload CSV to Database</button>
+    </form>
+
+    <h2>Search CSV Data</h2>
+    <form action="/search" method="post">
+        <input type="text" name="query" placeholder="Search here" value="{{ query|default('') }}">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <h3>Results:</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Vulnerabilities</th>
+                    <th>Links</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr>
+                        <td>{{ row['Vulnerabilities'] }}</td>
+                        <td><a href="{{ row['links'] }}" target="_blank">{{ row['links'] }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

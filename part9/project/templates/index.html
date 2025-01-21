@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Search with Suggestions</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Search in Excel File</h1>
+    <form method="post" action="/search">
+        <input type="text" id="query" name="query" placeholder="Enter search term" value="{{ query }}" autocomplete="off">
+        <button type="submit">Search</button>
+        <div id="suggestions" style="border: 1px solid #ccc; max-width: 200px; display: none; background: #f9f9f9;"></div>
+    </form>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if r %}
+        <p>{{ r }}</p>
+    {% endif %}
+
+    {% if results %}
+        <h2>Search Results</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    {% for col in results[0].keys() %}
+                        <th>{{ col }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr>
+                        {% for cell in row.values() %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <script>
+        $(document).ready(function() {
+            $('#query').on('input', function() {
+                let query = $(this).val();
+                if (query.length > 0) {
+                    $.get('/suggest', { query: query }, function(data) {
+                        let suggestions = data.suggestions;
+                        let suggestionBox = $('#suggestions');
+                        suggestionBox.empty().show();
+                        if (suggestions.length > 0) {
+                            suggestions.forEach(function(suggestion) {
+                                suggestionBox.append('<div style="padding: 5px; cursor: pointer;">' + suggestion + '</div>');
+                            });
+                        } else {
+                            suggestionBox.hide();
+                        }
+                    });
+                } 
+                else {
+                    $('#suggestions').hide();
+                }
+            });
+
+            // Handle clicking on a suggestion
+            $(document).on('click', '#suggestions div', function() {
+                $('#query').val($(this).text());
+                $('#suggestions').hide();
+            });
+        });
+    </script>
+</body>
+</html>
