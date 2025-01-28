@@ -7,7 +7,6 @@ This repository is a beginner-friendly guide to working with Flask, a lightweigh
 - Understand Flask routing and templates
 - Handle forms and user input
 - Connect Flask to a database (e.g., SQLite, PostgreSQL)
-- Create a RESTful API with Flask
 - Deploy Flask applications to the web
 
 ## Getting Started
